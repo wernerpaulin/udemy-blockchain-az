@@ -15,5 +15,8 @@ print("Starting the Blockchain...")
 class blockchain:
     def __init__(self) -> None:
         self.chain = []
+        self.create_block(proof = 1, previous_hash = '0')
+
+    def dest()
 
 # Part 2 - Mining our Blockchain
