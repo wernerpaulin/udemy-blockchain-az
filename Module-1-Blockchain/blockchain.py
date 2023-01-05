@@ -12,7 +12,7 @@ from flask import Flask, jsonify
 print("Starting the Blockchain...")
 
 # Part 1 - Building a Blockchain
-class blockchain:
+class Blockchain:
     def __init__(self):
         self.chain = []
         self.create_block(proof = 1, previous_hash = '0')
@@ -66,3 +66,10 @@ class blockchain:
         return True
 
 # Part 2 - Mining our Blockchain
+
+#Create a web app
+app = Flask(__name__)
+
+
+#Creating a blockchain
+blockchain = Blockchain
