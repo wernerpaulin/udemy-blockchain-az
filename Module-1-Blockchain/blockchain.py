@@ -4,6 +4,12 @@
 # pip install Flask
 # Postman
 
+#identified issues:
+#1. The entire block creation and proof of work is strange: PoW should be done over the entire block once a block has been created
+#2. GET: creates a block. But GET in REST never adds information
+#3. GET response is made manually from dictionary instead of a more generic way
+
+
 import datetime
 import hashlib 
 import json
@@ -73,3 +79,19 @@ app = Flask(__name__)
 
 #Creating a blockchain
 blockchain = Blockchain
+@app.route('/mine_block', methods=['GET'])
+def mine_block():
+    previous_block = blockchain.get_previous_block()
+    previous_proof = previous_block['proof']
+    proof = blockchain.proof_of_work(previous_proof)
+    previous_hash = blockchain.hash(previous_block)
+    block = blockchain.create_block(proof, previous_hash)
+    response = {'message': 'Congratulations, you just mind a block!',
+                'index': block['index'],
+                'timestamp': block['timestamp'],
+                'proof': block['proof'],
+                'previous_hash': block['previous_hash']}
+
+    return jsonify(response), 200
+
+
