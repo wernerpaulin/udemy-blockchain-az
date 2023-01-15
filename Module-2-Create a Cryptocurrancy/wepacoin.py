@@ -7,19 +7,20 @@
 # requests
 
 #identified issues:
-#1. The entire block creation and proof of work is strange: PoW should be done over the entire block once a block has been created
-#2. GET: creates a block. But GET in REST never adds information
-#3. GET response is made manually from dictionary instead of a more generic way
+
 
 
 import datetime
 import hashlib 
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+import requests
+from uuid import uuid4
+from urllib.parse import urlparse
 
 print("Starting the Blockchain...")
 
-# Part 1 - Building a Blockchain
+# Part 1 - Building a Crypto currancy based on the Blockchain
 class Blockchain:
     def __init__(self):
         self.chain = []
@@ -116,3 +117,6 @@ def is_valid():
 
 #Running the app
 app.run(host = '0.0.0.0', port = 5000)
+
+
+#Part 3 - Decentralize the blockchain
