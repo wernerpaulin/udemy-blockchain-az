@@ -1,4 +1,4 @@
-# Module 1 - Create a Blockchain
+# Module 2 - Create a Cryptocurrency
 # Packages required:
 # python -m pip install --upgrade pip 
 # pip install Flask
